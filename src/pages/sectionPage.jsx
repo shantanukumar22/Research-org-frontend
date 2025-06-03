@@ -48,7 +48,7 @@ const SectionPage = () => {
       try {
         setIsLoading(true);
         const res = await fetch(
-          "http://localhost:5000/api/blogs/section/" + sectionType
+          "https://research-org-backend.vercel.app/api/blogs/section/" + sectionType
         );
         const data = await res.json();
         setBlogs(data);
