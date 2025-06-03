@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = import.meta.env.VITE_API_URL || "https://research-org-backend.vercel.app/";
+const BASE_URL =
+  import.meta.env.VITE_API_URL || "https://research-org-backend.vercel.app";
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -23,7 +24,6 @@ export const getBlogById = async (id) => {
     return null;
   }
 };
-
 
 export const getAllBlogs = async () => {
   try {
