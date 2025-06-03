@@ -488,6 +488,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useQuill } from "react-quilljs";
 import { useAuth } from "../context/AuthContext";
 import "quill/dist/quill.snow.css";
+import SafeQuillEditor from "./SafeQuillEditor";
 
 const BlogForm = () => {
   const { currentUser, isAuthenticated } = useAuth();
