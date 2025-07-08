@@ -17,7 +17,6 @@ api.interceptors.request.use((config) => {
 // BLOG APIs
 export const getBlogById = async (id) => {
   try {
-    const res = await api.get(`/api/blogs/${id}`);
     return res.data;
   } catch (err) {
     console.error("getBlogById error:", err);
