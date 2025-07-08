@@ -65,16 +65,11 @@ const BlogDetail = () => {
       const data = await getBlogById(id);
       if (data) {
         setBlog(data);
-
-        // Update like data
-        const updatedLikes = data.likes || [];
-        setLikeCount(updatedLikes.length);
-
-        // Update user's like status
-        const userLiked = updatedLikes.some(
+        setLikeCount(data.likes?.length || 0);
+        const userLiked = data.likes?.some(
           (like) => like.user === currentUserId
         );
-        setUserHasLiked(userLiked);
+        setUserHasLiked(!!userLiked);
       }
     } catch (error) {
       console.error("Error refreshing blog:", error);
@@ -91,33 +86,21 @@ const BlogDetail = () => {
     setLikeError(null);
 
     try {
-      // Run animation
       setAnimateLike(true);
       setTimeout(() => setAnimateLike(false), 1000);
 
-      // Optimistic UI update
       const newLikeStatus = !userHasLiked;
-      setUserHasLiked(newLikeStatus);
-      setLikeCount((prevCount) =>
-        newLikeStatus ? prevCount + 1 : prevCount - 1
-      );
-
-      // API call based on new status
-      const updatedLikes = newLikeStatus
+      
+      // Make API call first before updating UI
+      const response = newLikeStatus
         ? await likeBlog(id)
         : await unlikeBlog(id);
 
-      if (updatedLikes) {
-        // Update with server data
-        setLikeCount(updatedLikes.length);
-        const userLiked = updatedLikes.some(
-          (like) => like.user === currentUserId
-        );
-        setUserHasLiked(userLiked);
-        setBlog((prev) => ({ ...prev, likes: updatedLikes }));
-      } else {
-        // Reset if API failed
-        await refreshBlog();
+      if (response) {
+        // Update UI after successful API call
+        setUserHasLiked(newLikeStatus);
+        setLikeCount(response.likes?.length || 0);
+        setBlog((prev) => ({ ...prev, likes: response.likes || [] }));
       }
     } catch (error) {
       console.error(
@@ -129,6 +112,7 @@ const BlogDetail = () => {
           userHasLiked ? "unlike" : "like"
         } the post. Please try again.`
       );
+      // Refresh to ensure UI is in sync with server
       await refreshBlog();
     } finally {
       setIsLikeLoading(false);
@@ -200,18 +184,20 @@ const BlogDetail = () => {
     );
   }
 
+  // Destructure blog data with default values
   const {
-    title,
-    content,
-    image,
-    name,
-    avatar,
-    date,
-    tags,
+    title = "",
+    content = "",
+    image = null,
+    name = "Anonymous",
+    avatar = null,
+    createdAt,
+    tags = [],
     comments = [],
   } = blog;
-  const formattedDate = date
-    ? new Date(date).toLocaleDateString("en-US", {
+
+  const formattedDate = createdAt
+    ? new Date(createdAt).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -231,20 +217,18 @@ const BlogDetail = () => {
           {avatar ? (
             <img
               src={avatar}
-              alt={`${name || "Author"}'s avatar`}
+              alt={`${name}'s avatar`}
               className="w-14 h-14 rounded-full mr-4 border-2 border-gray-200 shadow"
             />
           ) : (
             <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mr-4 shadow">
               <span className="text-white font-bold text-xl">
-                {(name || "A").charAt(0).toUpperCase()}
+                {name.charAt(0).toUpperCase()}
               </span>
             </div>
           )}
           <div>
-            <p className="text-xl font-medium text-gray-800">
-              {name || "Anonymous"}
-            </p>
+            <p className="text-xl font-medium text-gray-800">{name}</p>
             <p className="text-sm text-gray-500">Posted on {formattedDate}</p>
           </div>
         </div>
@@ -256,6 +240,10 @@ const BlogDetail = () => {
               src={image}
               alt={`Cover for ${title}`}
               className="w-full h-auto max-h-[600px] object-cover transition-transform hover:scale-105 duration-700"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "https://via.placeholder.com/800x400?text=Image+Not+Found";
+              }}
             />
           </div>
         )}
@@ -288,7 +276,7 @@ const BlogDetail = () => {
       <div className="border-t border-b py-6 my-8">
         <div className="flex flex-col">
           <div className="flex items-center gap-4">
-            {/* <button
+            <button
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 ${
                 userHasLiked
                   ? "bg-pink-100 text-pink-700 border border-pink-300 hover:bg-pink-200"
@@ -314,7 +302,7 @@ const BlogDetail = () => {
               <span className="font-medium ml-1 bg-white px-2 py-0.5 rounded-full border border-gray-200">
                 {likeCount}
               </span>
-            </button> */}
+            </button>
 
             <a
               href="#comments"

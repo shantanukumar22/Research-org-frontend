@@ -17,6 +17,7 @@ api.interceptors.request.use((config) => {
 // BLOG APIs
 export const getBlogById = async (id) => {
   try {
+    const res = await api.get(`/api/blogs/${id}`);
     return res.data;
   } catch (err) {
     console.error("getBlogById error:", err);
@@ -37,18 +38,26 @@ export const getAllBlogs = async () => {
 export const likeBlog = async (id) => {
   try {
     const res = await api.put(`/api/blogs/like/${id}`);
-    return res.data.likes;
+    if (!res.data) {
+      throw new Error('No response data');
+    }
+    return res.data;
   } catch (err) {
     console.error("likeBlog error:", err);
+    throw err;
   }
 };
 
 export const unlikeBlog = async (id) => {
   try {
     const res = await api.put(`/api/blogs/unlike/${id}`);
-    return res.data.likes;
+    if (!res.data) {
+      throw new Error('No response data');
+    }
+    return res.data;
   } catch (err) {
     console.error("unlikeBlog error:", err);
+    throw err;
   }
 };
 
