@@ -483,7 +483,7 @@ const Navbar = () => {
   return (
     <div className="w-full">
       {/* Top bar with dark background */}
-      <div className="w-full bg-[#1B325F] text-white py-2">
+      {/* <div className="w-full bg-[#1B325F] text-white py-2">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
           <div>Official Website of the Research Institute</div>
           <div className="hidden md:flex space-x-4">
@@ -495,7 +495,7 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Main Navigation */}
       <nav
