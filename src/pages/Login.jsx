@@ -36,21 +36,20 @@ const Login = () => {
     <div className="min-h-screen flex">
       {/* Left Section - Image and Quote */}
       <div className="hidden lg:flex lg:w-1/2 relative bg-gray-900">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070')",
-            filter: 'brightness(0.6)'
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070')",
+            filter: "brightness(0.6)",
           }}
         />
         <div className="relative w-full flex flex-col justify-end p-12 text-white">
           <div className="space-y-3">
-            <p className="text-2xl font-light">
-              "Simply all the tools that my team and I need."
-            </p>
+            <p className="text-2xl font-light">"we work for you."</p>
             <div>
-              <p className="font-semibold">Sarah Chen</p>
-              <p className="text-sm opacity-80">Director of Product Design</p>
+              <p className="font-semibold">someone</p>
+              <p className="text-sm opacity-80">Director of research</p>
             </div>
           </div>
         </div>
@@ -63,7 +62,8 @@ const Login = () => {
           <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-900">Welcome back</h1>
             <p className="mt-2 text-gray-600">
-              Build your design system effortlessly with our powerful component library.
+              Build your design system effortlessly with our powerful component
+              library.
             </p>
           </div>
 
@@ -128,11 +128,17 @@ const Login = () => {
                   onChange={(e) => setRememberMe(e.target.checked)}
                   className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
                 />
-                <label htmlFor="remember-me" className="ml-2 text-sm text-gray-600">
+                <label
+                  htmlFor="remember-me"
+                  className="ml-2 text-sm text-gray-600"
+                >
                   Remember sign in details
                 </label>
               </div>
-              <Link to="/forgot-password" className="text-sm text-purple-600 hover:text-purple-500">
+              <Link
+                to="/forgot-password"
+                className="text-sm text-purple-600 hover:text-purple-500"
+              >
                 Forgot password?
               </Link>
             </div>
@@ -158,7 +164,10 @@ const Login = () => {
             {/* Sign Up Link */}
             <p className="text-center text-sm text-gray-600">
               Don't have an account?{" "}
-              <Link to="/signup" className="font-medium text-purple-600 hover:text-purple-500">
+              <Link
+                to="/signup"
+                className="font-medium text-purple-600 hover:text-purple-500"
+              >
                 Sign up
               </Link>
             </p>
