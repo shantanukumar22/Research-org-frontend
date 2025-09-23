@@ -1,16 +1,20 @@
 
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   getBlogById,
   likeBlog,
   unlikeBlog,
   addCommentToBlog,
+  deleteBlog,
 } from "../services/api";
+import { useAuth } from "../context/AuthContext";
 
 const BlogDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
   const [blog, setBlog] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLikeLoading, setIsLikeLoading] = useState(false);
@@ -107,11 +111,20 @@ const BlogDetail = () => {
         `Error ${userHasLiked ? "unliking" : "liking"} blog:`,
         error
       );
-      setLikeError(
-        `Failed to ${
-          userHasLiked ? "unlike" : "like"
-        } the post. Please try again.`
-      );
+      
+      // Check for specific error messages
+      if (error.response?.data?.msg === "Blog already liked") {
+        setLikeError("You have already liked this post!");
+      } else if (error.response?.data?.msg === "Blog has not yet been liked") {
+        setLikeError("You haven't liked this post yet!");
+      } else {
+        setLikeError(
+          `Failed to ${
+            userHasLiked ? "unlike" : "like"
+          } the post. Please try again.`
+        );
+      }
+      
       // Refresh to ensure UI is in sync with server
       await refreshBlog();
     } finally {
@@ -143,6 +156,21 @@ const BlogDetail = () => {
       console.error("Error adding comment:", error);
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (window.confirm('Are you sure you want to delete this blog post? This action cannot be undone.')) {
+      try {
+        const success = await deleteBlog(id);
+        if (success) {
+          alert('Blog deleted successfully!');
+          navigate('/');
+        }
+      } catch (error) {
+        console.error('Error deleting blog:', error);
+        alert('Failed to delete blog. Please try again.');
+      }
     }
   };
 
@@ -191,26 +219,59 @@ const BlogDetail = () => {
     image = null,
     name = "Anonymous",
     avatar = null,
+    date,
     createdAt,
     tags = [],
     comments = [],
   } = blog;
 
-  const formattedDate = createdAt
-    ? new Date(createdAt).toLocaleDateString("en-US", {
+  const formattedDate = (date || createdAt)
+    ? new Date(date || createdAt).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
       })
     : "Unknown date";
 
+  const canEditOrDelete = currentUser && (
+    currentUser.role === 'admin' || 
+    (blog.author && blog.author._id === currentUser._id) ||
+    (blog.user && blog.user === currentUser._id)
+  );
+
   return (
     <article className="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-xl">
       {/* Blog Header */}
       <header className="mb-10">
-        <h1 className="text-4xl font-bold mb-6 text-gray-800 leading-tight">
-          {title}
-        </h1>
+        <div className="flex justify-between items-start mb-6">
+          <h1 className="text-4xl font-bold text-gray-800 leading-tight flex-1">
+            {title}
+          </h1>
+          
+          {/* Action buttons for authorized users */}
+          {canEditOrDelete && (
+            <div className="flex gap-3 ml-4">
+              <button
+                onClick={() => navigate(`/edit-blog/${id}`)}
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+                Edit
+              </button>
+              <button
+                onClick={handleDelete}
+                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                Delete
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* Author info */}
         <div className="flex items-center mb-8">

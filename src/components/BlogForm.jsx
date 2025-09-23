@@ -8,7 +8,9 @@ const BlogForm = () => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
   const [content, setContent] = useState("");
-  const [section, setSection] = useState("blog");
+  const [section, setSection] = useState("programmes");
+  const [subcategory, setSubcategory] = useState("");
+  const [eventDate, setEventDate] = useState("");
   const [tags, setTags] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -151,7 +153,9 @@ const BlogForm = () => {
 
   const resetForm = () => {
     setTitle("");
-    setSection("blog");
+    setSection("programmes");
+    setSubcategory("");
+    setEventDate("");
     setImage(null);
     setImagePreview(null);
     setTags("");
@@ -185,6 +189,10 @@ const BlogForm = () => {
     formData.append("content", content);
     formData.append("tags", tags);
     formData.append("section", section);
+    formData.append("subcategory", subcategory);
+    if (section === "events" && eventDate) {
+      formData.append("eventDate", eventDate);
+    }
     if (image) formData.append("image", image);
 
     try {
@@ -394,15 +402,62 @@ const BlogForm = () => {
                   </label>
                   <select
                     value={section}
-                    onChange={(e) => setSection(e.target.value)}
+                    onChange={(e) => {
+                      setSection(e.target.value);
+                      setSubcategory(""); // Reset subcategory when section changes
+                    }}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                   >
-                    <option value="blog">Blog Post</option>
-                    <option value="research">Research Article</option>
-                    <option value="publication">Publication</option>
-                    <option value="event">Event Announcement</option>
+                    <option value="programmes">Programmes</option>
+                    <option value="publications">Publications</option>
+                    <option value="events">Events</option>
                   </select>
                 </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Subcategory
+                  </label>
+                  <input
+                    type="text"
+                    value={subcategory}
+                    onChange={(e) => setSubcategory(e.target.value)}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    placeholder={
+                      section === "programmes" 
+                        ? "e.g., Workshops, Seminars, Training"
+                        : section === "publications" 
+                        ? "e.g., Research Papers, Books, Articles"
+                        : "e.g., Conference, Workshop, Meeting"
+                    }
+                  />
+                  <p className="mt-1 text-sm text-gray-500">
+                    {section === "programmes" 
+                      ? "Specify the type of programme"
+                      : section === "publications" 
+                      ? "Specify the type of publication"
+                      : "Specify the type of event"
+                    }
+                  </p>
+                </div>
+
+                {section === "events" && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Event Date <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="datetime-local"
+                      value={eventDate}
+                      onChange={(e) => setEventDate(e.target.value)}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                      required
+                    />
+                    <p className="mt-1 text-sm text-gray-500">
+                      Events will be automatically categorized as upcoming or past
+                    </p>
+                  </div>
+                )}
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">

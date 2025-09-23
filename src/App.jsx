@@ -10,7 +10,6 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import "./App.css";
-import Blogs from "./pages/Blogs";
 import Layout from "./components/Layout";
 import BlogForm from "./components/BlogForm";
 import BlogDetail from "./pages/BlogDetails";
@@ -20,6 +19,13 @@ import SectionPage from "./pages/sectionPage"; // create this page
 import About from "./pages/About";
 import Team from "./pages/Team";
 import Contact from "./pages/Contact";
+import Photography from "./pages/Photography";
+import PhotographyForm from "./components/PhotographyForm";
+import PhotographyDetail from "./pages/PhotographyDetail";
+import Programmes from "./pages/Programmes";
+import Publications from "./pages/Publications";
+import Events from "./pages/Events";
+import Profile from "./pages/Profile";
 
 // Protected route component
 const ProtectedRoute = ({ children }) => {
@@ -50,41 +56,33 @@ function App() {
           <Route
             path="/"
             element={
-              <ProtectedRoute>
-                <Layout>
-                  <Home />
-                </Layout>
-              </ProtectedRoute>
+              <Layout>
+                <Home />
+              </Layout>
             }
           />
           <Route
             path="/about"
             element={
-              <ProtectedRoute>
-                <Layout>
-                  <About />
-                </Layout>
-              </ProtectedRoute>
+              <Layout>
+                <About />
+              </Layout>
             }
           />
           <Route
             path="/team"
             element={
-              <ProtectedRoute>
-                <Layout>
-                  <Team />
-                </Layout>
-              </ProtectedRoute>
+              <Layout>
+                <Team />
+              </Layout>
             }
           />
           <Route
             path="/contact"
             element={
-              <ProtectedRoute>
-                <Layout>
-                  <Contact />
-                </Layout>
-              </ProtectedRoute>
+              <Layout>
+                <Contact />
+              </Layout>
             }
           />
           <Route path="/edit-blog/:id" element={<EditBlog />} />
@@ -106,21 +104,71 @@ function App() {
             }
           />
           <Route
-            path="/blogs"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <Blogs />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          <Route
             path="/create-blog"
             element={
               <ProtectedRoute>
                 <Layout>
                   <BlogForm />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/photography"
+            element={
+              <Layout>
+                <Photography />
+              </Layout>
+            }
+          />
+          <Route
+            path="/create-photography"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <PhotographyForm />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/photography/:id"
+            element={
+              <Layout>
+                <PhotographyDetail />
+              </Layout>
+            }
+          />
+          <Route
+            path="/programmes"
+            element={
+              <Layout>
+                <Programmes />
+              </Layout>
+            }
+          />
+          <Route
+            path="/publications"
+            element={
+              <Layout>
+                <Publications />
+              </Layout>
+            }
+          />
+          <Route
+            path="/events"
+            element={
+              <Layout>
+                <Events />
+              </Layout>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Profile />
                 </Layout>
               </ProtectedRoute>
             }

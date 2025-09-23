@@ -520,11 +520,12 @@ const Navbar = () => {
               <div className="flex space-x-1">
                 {[
                   { path: "/", label: "Home" },
-                  { path: "/blogs", label: "articles" },
-                  { path: "/section/event", label: "Events" },
                   { path: "/about", label: "About-Us" },
                   { path: "/contact", label: "Contact" },
-                  { path: "/section/publication", label: "Publication" },
+                  { path: "/programmes", label: "Programmes" },
+                  { path: "/publications", label: "Publications" },
+                  { path: "/events", label: "Events" },
+                  { path: "/photography", label: "Photography" },
                 ].map((item) => (
                   <Link
                     key={item.path}
@@ -540,7 +541,7 @@ const Navbar = () => {
                 ))}
 
                 {/* Admin Dropdown */}
-                {currentUser && currentUser.role === "admin" && (
+                {/* {currentUser && currentUser.role === "admin" && (
                   <div className="relative group">
                     <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#1B325F] hover:bg-gray-50 flex items-center">
                       Admin
@@ -567,19 +568,38 @@ const Navbar = () => {
                       </Link>
                     </div>
                   </div>
-                )}
+                )} */}
               </div>
 
               {/* Authentication */}
               <div className="ml-6 flex items-center">
                 {currentUser ? (
                   <div className="flex items-center space-x-4">
-                    <span className="text-sm text-gray-700">
-                      Welcome, {currentUser.name}
-                    </span>
+                    <Link
+                      to="/profile"
+                      className="flex items-center space-x-2 text-sm text-gray-700 hover:text-[#1B325F] transition-colors"
+                    >
+                      <div className="w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        {currentUser.avatar ? (
+                          <img
+                            src={currentUser.avatar}
+                            alt="Profile"
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                              e.target.nextSibling.style.display = 'flex';
+                            }}
+                          />
+                        ) : null}
+                        <span className="text-white text-sm font-medium" style={{display: currentUser.avatar ? 'none' : 'flex'}}>
+                          {currentUser.name?.charAt(0)?.toUpperCase() || 'U'}
+                        </span>
+                      </div>
+                      <span>{currentUser.name}</span>
+                    </Link>
                     <button
                       onClick={logout}
-                      className="bg-[#1B325F] hover:bg-[#2C4875] text-white text-sm px-4 py-2 transition-colors"
+                      className="bg-[#3f54db] hover:bg-[#2C4875] text-white text-sm px-4 py-2 transition-colors border-none rounded-md"
                     >
                       Logout
                     </button>
@@ -613,11 +633,12 @@ const Navbar = () => {
             <div className="px-4 pt-2 pb-3 space-y-1">
               {[
                 { path: "/", label: "Home" },
-                { path: "/blogs", label: "Research Articles" },
-                { path: "/events", label: "Events" },
                 { path: "/about", label: "About Us" },
                 { path: "/contact", label: "Contact" },
-                { path: "/section/publication", label: "Publication" },
+                { path: "/programmes", label: "Programmes" },
+                { path: "/publications", label: "Publications" },
+                { path: "/events", label: "Events" },
+                { path: "/photography", label: "Photography" },
               ].map((item) => (
                 <Link
                   key={item.path}
@@ -641,6 +662,7 @@ const Navbar = () => {
                   </div>
                   {[
                     { path: "/create-blog", label: "Create Article" },
+                    { path: "/create-photography", label: "Create Photography" },
                     { path: "/manage-blogs", label: "Manage Articles" },
                     { path: "/manage-events", label: "Manage Events" },
                   ].map((item) => (
@@ -661,9 +683,32 @@ const Navbar = () => {
             <div className="pt-4 pb-3 border-t border-gray-200 px-4">
               {currentUser ? (
                 <div className="space-y-3">
-                  <div className="text-base font-medium text-gray-700">
-                    Welcome, {currentUser.name}
-                  </div>
+                  <Link
+                    to="/profile"
+                    className="flex items-center space-x-3 text-base font-medium text-gray-700 hover:text-[#1B325F] transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <div className="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                      {currentUser.avatar ? (
+                        <img
+                          src={currentUser.avatar}
+                          alt="Profile"
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling.style.display = 'flex';
+                          }}
+                        />
+                      ) : null}
+                      <span className="text-white text-lg font-medium" style={{display: currentUser.avatar ? 'none' : 'flex'}}>
+                        {currentUser.name?.charAt(0)?.toUpperCase() || 'U'}
+                      </span>
+                    </div>
+                    <div>
+                      <div className="font-medium">{currentUser.name}</div>
+                      <div className="text-sm text-gray-500">View Profile</div>
+                    </div>
+                  </Link>
                   <button
                     onClick={() => {
                       logout();

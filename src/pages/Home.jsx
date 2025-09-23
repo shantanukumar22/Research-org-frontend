@@ -75,6 +75,11 @@ const Home = () => {
     fetchBlogs();
   }, []);
 
+  // Handle blog deletion
+  const handleBlogDelete = useCallback((deletedBlogId) => {
+    setBlogs(prevBlogs => prevBlogs.filter(blog => blog._id !== deletedBlogId));
+  }, []);
+
   // Memoized section blogs
   const researchBlogs = filterBlogsBySection("research");
   const publicationBlogs = filterBlogsBySection("publication");
@@ -222,13 +227,14 @@ const Home = () => {
               researchBlogs={researchBlogs}
               publicationBlogs={publicationBlogs}
               eventBlogs={eventBlogs}
+              onBlogDelete={handleBlogDelete}
             />
 
             {/* Team Section */}
             <TeamSection />
 
             {/* Educational Resources Section */}
-            <EducationalResources blogs={recentBlogs.slice(0, 4)} />
+            <EducationalResources blogs={recentBlogs.slice(0, 4)} onBlogDelete={handleBlogDelete} />
 
             {/* Information Cards Section */}
             <InformationCards />

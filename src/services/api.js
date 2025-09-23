@@ -122,4 +122,42 @@ export const getUpcomingEvents = async () => {
   }
 };
 
+// USER PROFILE APIs
+export const getUserProfile = async () => {
+  try {
+    const res = await api.get("/api/users/profile-details");
+    return res.data;
+  } catch (err) {
+    console.error("getUserProfile error:", err);
+    throw err;
+  }
+};
+
+export const updateUserProfile = async (profileData) => {
+  try {
+    const res = await api.put("/api/users/profile", profileData);
+    return res.data;
+  } catch (err) {
+    console.error("updateUserProfile error:", err);
+    throw err;
+  }
+};
+
+export const uploadProfileImage = async (file) => {
+  try {
+    const formData = new FormData();
+    formData.append('image', file);
+    
+    const res = await api.post("/api/users/upload-profile-image", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return res.data;
+  } catch (err) {
+    console.error("uploadProfileImage error:", err);
+    throw err;
+  }
+};
+
 export default api;
