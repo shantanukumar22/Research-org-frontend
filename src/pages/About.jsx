@@ -1,5 +1,5 @@
 import React from "react";
-import { Users, BookOpen, Globe, Award } from "lucide-react";
+import { Users, BookOpen, Globe, Award, Heart, Shield, TreePine, Target } from "lucide-react";
 
 export default function About() {
   return (
@@ -7,33 +7,42 @@ export default function About() {
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
-          About Our Research Organization
+          Institute for Democracy and Sustainability (IDS)
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Dedicated to advancing scientific knowledge and developing innovative
-          solutions for global challenges.
+          Committed to upholding the right to space of marginal and vulnerable urban dwellers 
+          and ensuring their inclusion in urban democratic processes.
         </p>
       </div>
 
-      {/* Mission & Vision */}
+      {/* Vision & Ideology */}
       <div className="bg-gray-50 rounded-lg p-8 mb-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
           <p className="text-lg text-gray-700 mb-8">
-            Our organization is committed to conducting pioneering research that
-            addresses critical challenges in [your specific field]. Through
-            collaborative efforts and innovative methodologies, we aim to
-            contribute knowledge that improves human understanding and creates
-            positive impact.
+            We envision a society based on equity, equality, justice and non-violence wherein 
+            human rights are revered and all developmental processes proceed in a democratic 
+            and sustainable manner.
           </p>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Ideology</h2>
+          <p className="text-lg text-gray-700 mb-4">
+            We believe that, in the name of development, our society is experiencing a 
+            degradation of its life support systems. The process of "development" suffers from 
+            a lack of contextual thought and a disregard of the long-term vision of sustainable 
+            development. There is a need to prevent, arrest and restrain this degradation.
+          </p>
+          <p className="text-lg text-gray-700 mb-4">
+            The profile of society in general, and democracy in particular is changing due to 
+            a continuous exodus of poor people from the villages to the cities looking for 
+            employment opportunities in the informal sector such as cycle rickshaw pullers, 
+            cyclists, pedestrians, domestic workers, street vendors, waste pickers, and 
+            industrial labourers.
+          </p>
           <p className="text-lg text-gray-700">
-            We envision a world where evidence-based research guides policy
-            decisions, technological advancement, and social progress. By
-            fostering an environment of academic excellence and inclusive
-            collaboration, we strive to be at the forefront of discoveries that
-            shape our future.
+            We, at the IDS, are committed to upholding RIGHT TO SPACE of Marginal and 
+            Vulnerable Urban dwellers and ensuring their inclusion in the urban democratic 
+            processes.
           </p>
         </div>
       </div>
@@ -41,17 +50,30 @@ export default function About() {
       {/* Core Values */}
       <div className="mb-16">
         <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-          Our Core Values
+          Our Focus Areas
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
             <div className="flex justify-center mb-4">
-              <BookOpen className="h-12 w-12 text-blue-600" />
+              <Shield className="h-12 w-12 text-blue-600" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Academic Integrity</h3>
+            <h3 className="text-xl font-semibold mb-2">Right to Space</h3>
             <p className="text-gray-600">
-              We uphold the highest standards of honesty, accuracy, and ethical
-              conduct in all our research endeavors.
+              Upholding the right to space of marginal and vulnerable urban dwellers 
+              in democratic processes.
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-md text-center">
+            <div className="flex justify-center mb-4">
+              <TreePine className="h-12 w-12 text-blue-600" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">
+              Sustainable Transportation
+            </h3>
+            <p className="text-gray-600">
+              Supporting non-polluting and people-friendly modes of transportation 
+              like cycles, rickshaws, and pedestrians.
             </p>
           </div>
 
@@ -59,156 +81,152 @@ export default function About() {
             <div className="flex justify-center mb-4">
               <Users className="h-12 w-12 text-blue-600" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">
-              Collaborative Innovation
-            </h3>
+            <h3 className="text-xl font-semibold mb-2">Migrant Workers</h3>
             <p className="text-gray-600">
-              We foster partnerships across disciplines and sectors to develop
-              comprehensive solutions to complex problems.
+              Advocating for the rights and dignity of migrant workers and 
+              informal sector employees.
             </p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md text-center">
             <div className="flex justify-center mb-4">
-              <Globe className="h-12 w-12 text-blue-600" />
+              <Heart className="h-12 w-12 text-blue-600" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Global Perspective</h3>
+            <h3 className="text-xl font-semibold mb-2">Social Justice</h3>
             <p className="text-gray-600">
-              We approach research with an inclusive, worldwide viewpoint,
-              recognizing diverse insights and applications.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <div className="flex justify-center mb-4">
-              <Award className="h-12 w-12 text-blue-600" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Excellence</h3>
-            <p className="text-gray-600">
-              We strive for distinction in all aspects of our work, from
-              methodology to dissemination of findings.
+              Promoting equity, equality, justice and non-violence in all 
+              developmental processes.
             </p>
           </div>
         </div>
       </div>
 
-      {/* History Section */}
+      {/* Objective Section */}
       <div className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Our History</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Objective</h2>
         <div className="bg-white p-8 rounded-lg shadow-md">
           <p className="text-lg text-gray-700 mb-4">
-            Founded in [founding year], our organization began with a small team
-            of dedicated researchers focused on [initial research focus]. Over
-            the years, we have expanded our scope to address emerging challenges
-            while maintaining our commitment to scientific excellence.
+            Our objective is to help, aid, assist, arrange, contribute, finance, 
+            coordinate, organize, maintain and carry out democratic, sustainable and 
+            general welfare activities connected with the health, education, culture 
+            and upliftment of all the people, with special focus on every kind of 
+            human labor.
           </p>
           <p className="text-lg text-gray-700 mb-4">
-            Through strategic partnerships with universities, industry leaders,
-            and government agencies, we have successfully completed [number]
-            major research initiatives that have influenced policy decisions and
-            technological advancements.
+            The long term goal of the institute is to generate awareness in the society 
+            about the shortcomings of the current developmental practices, with regard 
+            to sustainability and democracy.
           </p>
           <p className="text-lg text-gray-700">
-            Today, with [number] researchers across [number] specialized
-            departments, we continue to push the boundaries of knowledge in
-            service of our mission.
+            Our experience, over the past few years, has led us to understand that 
+            transportation can be a major enabling or disabling factor for survival 
+            in the urban or rural context. Issues of shelter, livelihood and services 
+            are linked to and linked by the transport infrastructure in the city or village.
           </p>
         </div>
       </div>
 
-      {/* Team Introduction */}
+      {/* Strategy Section */}
       <div className="mb-16">
         <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
-          Leadership Team
+          Our Strategy
         </h2>
         <p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
-          Our organization is led by distinguished experts committed to
-          advancing our research mission and fostering a culture of innovation.
+          We believe that for the successful achievement of our goals we need to apply, 
+          and balance between, the academic and the activist approaches of tackling 
+          grass-root level problems.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Team member cards would go here - just showing placeholder structure */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="h-64 bg-gray-200"></div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-1">Dr. Jane Smith</h3>
-              <p className="text-blue-600 font-medium mb-3">
-                Executive Director
-              </p>
-              <p className="text-gray-600">
-                Ph.D. in [Field] with over 20 years of research experience in
-                [specialization].
-              </p>
-            </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white rounded-lg shadow-md p-8">
+            <h3 className="text-2xl font-bold mb-6 text-blue-600">Academic Approach</h3>
+            <ul className="space-y-4 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Research on different aspects of social development, highlighting the dis-benefits of "development" to the poor
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Preparation of dissemination material in audio-visual form, like video, plays, exhibitions
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Publication of monographs, books, pamphlets, newsletters
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Formulation of Democracy and Sustainable Development study programs
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Conducting seminars, conferences and workshops
+              </li>
+            </ul>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="h-64 bg-gray-200"></div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-1">Dr. Michael Johnson</h3>
-              <p className="text-blue-600 font-medium mb-3">
-                Research Director
-              </p>
-              <p className="text-gray-600">
-                Leading our efforts in [research area] with breakthrough
-                publications in top journals.
-              </p>
-            </div>
+          <div className="bg-white rounded-lg shadow-md p-8">
+            <h3 className="text-2xl font-bold mb-6 text-blue-600">Activist Approach</h3>
+            <ul className="space-y-4 text-gray-700">
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Formation of thematic organizations on activities such as democratic understanding, legal awakening, sustainable urban transportation
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Networking of individuals, groups and organizations working on similar issues
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Promotion and aid of health centers and de-addiction centers for migrant workers
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Liaisoning with government organizations for poverty alleviation schemes
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Providing legal assistance to the poor and those seeking to correct wrongs against human rights
+              </li>
+            </ul>
           </div>
-
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="h-64 bg-gray-200"></div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-1">Dr. Sarah Williams</h3>
-              <p className="text-blue-600 font-medium mb-3">
-                Head of Innovation
-              </p>
-              <p className="text-gray-600">
-                Specializes in translating research findings into practical
-                applications and policies.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center mt-8">
-          <a
-            href="/team"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-          >
-            Meet Our Full Team
-          </a>
         </div>
       </div>
 
-      {/* Publications & Impact */}
+      {/* Governing Board */}
       <div className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Impact</h2>
-        <div className="bg-gray-50 p-8 rounded-lg">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <p className="text-4xl font-bold text-blue-600 mb-2">100+</p>
-              <p className="text-xl text-gray-700">
-                Peer-reviewed Publications
-              </p>
+        <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
+          Governing Board Members
+        </h2>
+        <div className="bg-white rounded-lg shadow-md p-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="text-center p-4 border-b border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900">Mahesh Kumar Gaur</h3>
+              <p className="text-blue-600 font-medium">Chairperson</p>
             </div>
-            <div>
-              <p className="text-4xl font-bold text-blue-600 mb-2">25+</p>
-              <p className="text-xl text-gray-700">Research Partnerships</p>
+            <div className="text-center p-4 border-b border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900">Rajendra Ravi</h3>
+              <p className="text-blue-600 font-medium">Director</p>
             </div>
-            <div>
-              <p className="text-4xl font-bold text-blue-600 mb-2">12</p>
-              <p className="text-xl text-gray-700">Major Grants Received</p>
+            <div className="text-center p-4 border-b border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900">Geeta Ravikirti</h3>
+              <p className="text-blue-600 font-medium">Treasurer</p>
             </div>
-          </div>
-
-          <div className="mt-8 text-center">
-            <a
-              href="/publications"
-              className="text-blue-600 hover:text-blue-800 font-medium"
-            >
-              Explore Our Research Publications →
-            </a>
+            <div className="text-center p-4 border-b border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900">Mamta</h3>
+              <p className="text-blue-600 font-medium">Member</p>
+            </div>
+            <div className="text-center p-4 border-b border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900">Tarun Kanti Bose</h3>
+              <p className="text-blue-600 font-medium">Member</p>
+            </div>
+            <div className="text-center p-4 border-b border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900">Suraj Kumar</h3>
+              <p className="text-blue-600 font-medium">Member</p>
+            </div>
+            <div className="text-center p-4">
+              <h3 className="text-lg font-semibold text-gray-900">Basant Kumar Hetamsaria</h3>
+              <p className="text-blue-600 font-medium">Member</p>
+            </div>
           </div>
         </div>
       </div>
@@ -216,11 +234,11 @@ export default function About() {
       {/* Contact CTA */}
       <div className="bg-blue-700 text-white rounded-lg p-8 text-center">
         <h2 className="text-3xl font-bold mb-4">
-          Interested in Collaborating?
+          Join Our Movement for Democracy and Sustainability
         </h2>
         <p className="text-xl mb-8 max-w-2xl mx-auto">
-          We're always looking for partners who share our vision and can
-          contribute to our research initiatives.
+          We're always looking for partners who share our vision of equity, equality, 
+          justice and non-violence in developmental processes.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <a
@@ -230,10 +248,10 @@ export default function About() {
             Contact Us
           </a>
           <a
-            href="/partnerships"
+            href="/team"
             className="inline-flex items-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-blue-800"
           >
-            Learn About Partnerships
+            Learn About Our Work
           </a>
         </div>
       </div>

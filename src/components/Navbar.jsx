@@ -510,7 +510,7 @@ const Navbar = () => {
               <Link to="/" className="flex items-center space-x-3">
                 {/* You can add a government seal/logo image here */}
                 <span className="text-xl font-serif text-[#1B325F]">
-                  Research Institute
+                  IDS
                 </span>
               </Link>
             </div>
@@ -522,10 +522,12 @@ const Navbar = () => {
                   { path: "/", label: "Home" },
                   { path: "/about", label: "About-Us" },
                   { path: "/contact", label: "Contact" },
+                  { path: "/team", label: "Team" },
                   { path: "/programmes", label: "Programmes" },
                   { path: "/publications", label: "Publications" },
                   { path: "/events", label: "Events" },
                   { path: "/photography", label: "Photography" },
+
                 ].map((item) => (
                   <Link
                     key={item.path}
@@ -635,10 +637,13 @@ const Navbar = () => {
                 { path: "/", label: "Home" },
                 { path: "/about", label: "About Us" },
                 { path: "/contact", label: "Contact" },
+                { path: "/team", label: "Team" },
                 { path: "/programmes", label: "Programmes" },
                 { path: "/publications", label: "Publications" },
                 { path: "/events", label: "Events" },
                 { path: "/photography", label: "Photography" },
+
+
               ].map((item) => (
                 <Link
                   key={item.path}

@@ -220,7 +220,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 py-12">
           <Suspense fallback={<LoadingSkeleton />}>
             {/* Research Highlights Section */}
-            <ResearchHighlights />
+            {/* <ResearchHighlights /> */}
 
             {/* Featured Grid Section */}
             <FeaturedGrid
@@ -240,7 +240,7 @@ const Home = () => {
             <InformationCards />
 
             {/* Newsletter Section */}
-            <NewsletterSection />
+            {/* <NewsletterSection /> */}
           </Suspense>
         </div>
       </AnimatePresence>

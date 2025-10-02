@@ -2,11 +2,10 @@ import { motion } from 'framer-motion';
 
 const team = [
   {
-    name: 'Dr. Sarah Chen',
-    role: 'Research Director',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3',
-    specialization: 'Quantum Computing',
-    publications: 45,
+    name: 'Mahesh Kumar Gaur',
+    role: 'Chairperson',
+    image: '', // Will be added later
+    specialization: 'Leadership & Governance',
     social: {
       twitter: '#',
       linkedin: '#',
@@ -14,11 +13,10 @@ const team = [
     }
   },
   {
-    name: 'Prof. James Wilson',
-    role: 'Senior Researcher',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3',
-    specialization: 'AI Ethics',
-    publications: 32,
+    name: 'Rajendra Ravi',
+    role: 'Director',
+    image: '', // Will be added later
+    specialization: 'Strategic Planning',
     social: {
       twitter: '#',
       linkedin: '#',
@@ -26,11 +24,10 @@ const team = [
     }
   },
   {
-    name: 'Dr. Emily Rodriguez',
-    role: 'Lead Researcher',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3',
-    specialization: 'Sustainable Energy',
-    publications: 28,
+    name: 'Geeta Ravikirti',
+    role: 'Treasurer',
+    image: '', // Will be added later
+    specialization: 'Financial Management',
     social: {
       twitter: '#',
       linkedin: '#',
@@ -38,11 +35,43 @@ const team = [
     }
   },
   {
-    name: 'Dr. Michael Chang',
-    role: 'Research Fellow',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3',
-    specialization: 'Data Science',
-    publications: 25,
+    name: 'Mamta',
+    role: 'Member',
+    image: '', // Will be added later
+    specialization: 'Board Member',
+    social: {
+      twitter: '#',
+      linkedin: '#',
+      scholar: '#'
+    }
+  },
+  {
+    name: 'Tarun Kanti Bose',
+    role: 'Member',
+    image: '', // Will be added later
+    specialization: 'Board Member',
+    social: {
+      twitter: '#',
+      linkedin: '#',
+      scholar: '#'
+    }
+  },
+  {
+    name: 'Suraj Kumar',
+    role: 'Member',
+    image: '', // Will be added later
+    specialization: 'Board Member',
+    social: {
+      twitter: '#',
+      linkedin: '#',
+      scholar: '#'
+    }
+  },
+  {
+    name: 'Basant Kumar Hetamsaria',
+    role: 'Member',
+    image: '', // Will be added later
+    specialization: 'Board Member',
     social: {
       twitter: '#',
       linkedin: '#',
@@ -60,12 +89,20 @@ const TeamMemberCard = ({ member, index }) => (
     className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
   >
     <div className="relative group">
-      <img
-        src={member.image}
-        alt={member.name}
-        className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-        loading="lazy"
-      />
+      {member.image ? (
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+        />
+      ) : (
+        <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+          <div className="text-6xl font-bold text-blue-600">
+            {member.name.split(' ').map(n => n[0]).join('')}
+          </div>
+        </div>
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="absolute bottom-4 left-4 right-4">
           <div className="flex justify-center space-x-3">
@@ -107,18 +144,12 @@ const TeamMemberCard = ({ member, index }) => (
     <div className="p-6">
       <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
       <p className="text-blue-600 font-medium mt-1">{member.role}</p>
-      <div className="mt-4 space-y-2">
+      <div className="mt-4">
         <div className="flex items-center text-gray-600">
           <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
           <span>{member.specialization}</span>
-        </div>
-        <div className="flex items-center text-gray-600">
-          <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-          <span>{member.publications} Publications</span>
         </div>
       </div>
     </div>
@@ -136,10 +167,10 @@ const TeamSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
-            Meet Our Research Team
+            Governing Board Members
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our diverse team of experts brings together decades of experience in various research domains.
+            Our dedicated governing board members who guide the Institute for Democracy and Sustainability towards its mission.
           </p>
         </motion.div>
 
@@ -159,7 +190,7 @@ const TeamSection = () => {
             href="/team"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
           >
-            View Full Team
+            View All Board Members
             <svg
               className="ml-2 -mr-1 w-5 h-5"
               fill="none"

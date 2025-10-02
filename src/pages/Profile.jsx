@@ -373,7 +373,7 @@ const Profile = () => {
         </div>
 
         {/* Account Statistics */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <div className="flex items-center">
               <div className="p-3 bg-blue-100 rounded-lg">
@@ -415,7 +415,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const SafeQuillEditor = ({ value, onChange }) => {
             modules: {
               toolbar: {
                 container: [
-                  [{ header: [1, 2, 3, false] }],
+                  [{ header: [1, 2, 3, 4, 5, 6, false] }],
                   ["bold", "italic", "underline", "strike"],
                   [{ color: [] }, { background: [] }],
                   [
@@ -76,13 +76,19 @@ const SafeQuillEditor = ({ value, onChange }) => {
 
           useEffect(() => {
             if (!quill) return;
+            
+            // Set initial content if provided
+            if (value && quill.root.innerHTML !== value) {
+              quill.root.innerHTML = value;
+            }
+            
             quill.on("text-change", () => {
               onChange(quill.root.innerHTML);
             });
 
             const toolbar = quill.getModule("toolbar");
             if (toolbar) toolbar.addHandler("image", imageHandler);
-          }, [quill, imageHandler]);
+          }, [quill, imageHandler, value, onChange]);
 
           return <div ref={quillRef} style={{ minHeight: "400px" }} />;
         };
