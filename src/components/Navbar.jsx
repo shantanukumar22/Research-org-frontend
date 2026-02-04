@@ -509,9 +509,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-3">
                 {/* You can add a government seal/logo image here */}
-                <span className="text-xl font-serif text-[#1B325F]">
-                  IDS
-                </span>
+                <span className="text-xl font-serif text-[#1B325F]">IDSJ</span>
               </Link>
             </div>
 
@@ -527,7 +525,6 @@ const Navbar = () => {
                   { path: "/publications", label: "Publications" },
                   { path: "/events", label: "Events" },
                   { path: "/photography", label: "Photography" },
-
                 ].map((item) => (
                   <Link
                     key={item.path}
@@ -588,13 +585,18 @@ const Navbar = () => {
                             alt="Profile"
                             className="w-full h-full object-cover"
                             onError={(e) => {
-                              e.target.style.display = 'none';
-                              e.target.nextSibling.style.display = 'flex';
+                              e.target.style.display = "none";
+                              e.target.nextSibling.style.display = "flex";
                             }}
                           />
                         ) : null}
-                        <span className="text-white text-sm font-medium" style={{display: currentUser.avatar ? 'none' : 'flex'}}>
-                          {currentUser.name?.charAt(0)?.toUpperCase() || 'U'}
+                        <span
+                          className="text-white text-sm font-medium"
+                          style={{
+                            display: currentUser.avatar ? "none" : "flex",
+                          }}
+                        >
+                          {currentUser.name?.charAt(0)?.toUpperCase() || "U"}
                         </span>
                       </div>
                       <span>{currentUser.name}</span>
@@ -642,8 +644,6 @@ const Navbar = () => {
                 { path: "/publications", label: "Publications" },
                 { path: "/events", label: "Events" },
                 { path: "/photography", label: "Photography" },
-
-
               ].map((item) => (
                 <Link
                   key={item.path}
@@ -667,7 +667,10 @@ const Navbar = () => {
                   </div>
                   {[
                     { path: "/create-blog", label: "Create Article" },
-                    { path: "/create-photography", label: "Create Photography" },
+                    {
+                      path: "/create-photography",
+                      label: "Create Photography",
+                    },
                     { path: "/manage-blogs", label: "Manage Articles" },
                     { path: "/manage-events", label: "Manage Events" },
                   ].map((item) => (
@@ -700,13 +703,18 @@ const Navbar = () => {
                           alt="Profile"
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'flex';
+                            e.target.style.display = "none";
+                            e.target.nextSibling.style.display = "flex";
                           }}
                         />
                       ) : null}
-                      <span className="text-white text-lg font-medium" style={{display: currentUser.avatar ? 'none' : 'flex'}}>
-                        {currentUser.name?.charAt(0)?.toUpperCase() || 'U'}
+                      <span
+                        className="text-white text-lg font-medium"
+                        style={{
+                          display: currentUser.avatar ? "none" : "flex",
+                        }}
+                      >
+                        {currentUser.name?.charAt(0)?.toUpperCase() || "U"}
                       </span>
                     </div>
                     <div>
