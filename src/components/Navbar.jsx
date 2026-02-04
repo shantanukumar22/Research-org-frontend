@@ -508,8 +508,11 @@ const Navbar = () => {
             {/* Logo and Brand */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-3">
-                {/* You can add a government seal/logo image here */}
-                <span className="text-xl font-serif text-[#1B325F]">IDSJ</span>
+                <img
+                  src="/idslogo.jpg"
+                  alt="Research Institute Logo"
+                  className="h-18 w-auto object-contain"
+                />
               </Link>
             </div>
 
